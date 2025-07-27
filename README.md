@@ -15,5 +15,5 @@ See https://eci.dc.uba.ar/cursos-eci/t1-interactive-theorem-provers-theory-and-p
 ## Installation
 
 This course will include exercises in Rocq Unimath.
-- The easiest way to use Rocq Unimath is in-browser: https://unimath.github.io/live/
+- The easiest way to use Rocq Unimath is in-browser: https://unimath.github.io/live/ (Firefox and Chrome are recommended over Safari or other browsers.)
 - Power users can download it and use it with their preferred editor. Start here: https://github.com/UniMath/UniMath/blob/master/README.md.
