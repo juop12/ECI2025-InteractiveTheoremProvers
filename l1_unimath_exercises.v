@@ -54,13 +54,15 @@ Proof.
   exact p.
 Qed.
 
+Print firstProjection.
+
 (* or we could do *)
 
 Theorem firstProjectionAgain {P Q : UU} : (P × Q) → P.
 Proof.
   intro p.
   induction p as [p _].
-  (* Using the _ tells Coq that we don't care about the second term. We will see _ used in other similar ways.*)
+  (* Using the _ tells Rocq that we don't care about the second term. We will see _ used in other similar ways.*)
   exact p.
 Qed.
 
@@ -71,8 +73,9 @@ Qed.
 Theorem commute {P Q : UU} (c : Q × P) : P × Q.
 Proof.
   induction c as [q p].
-  exact (p,,q).
-  (* In Unimath, you write terms of a product type as ~(?,,?)~ unfortunately.*)
+  split.
+  - exact p.
+  - exact q.    
 Qed.
 
 (* Exercise 4 *)

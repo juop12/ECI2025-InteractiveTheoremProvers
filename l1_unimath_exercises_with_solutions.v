@@ -153,6 +153,7 @@ Require Export UniMath.Combinatorics.Vectors.
 
 Definition zeros (n : nat) : vec nat n.
 (* Here, nat is the type of natural numbers, and vec nat n is the type of vectors of length n whose entries are natural numbers*)
+
 Proof.
   induction n.
   (* Here, we do induction on the natural number n.*)
