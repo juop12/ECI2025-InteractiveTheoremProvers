@@ -144,3 +144,35 @@ Proof.
 Defined.
 
 Print identity.
+
+(* Example 8 *)
+
+(* We can define the vectors of 0's of any length. *)
+
+Require Export UniMath.Combinatorics.Vectors.
+
+Definition zeros (n : nat) : vec nat n.
+(* Here, nat is the type of natural numbers, and vec nat n is the type of vectors of length n whose entries are natural numbers*)
+Proof.
+  induction n.
+  (* Here, we do induction on the natural number n.*)
+  - exact vnil.
+  (* The dashes mark the two cases: the base case (n = 0) and the inductive case (n + 1).*)
+  (* ~vnil~ and ~vcons~ are the two constructors: ~vnil~ is the empty list and ~vcons~ takes a term of the underlying type, here ~nat~, and a vector and produces a new vector.*)
+  - exact (vcons 0 IHn).
+Defined.
+
+(* Exercise 9 *)
+
+(* When we define something with the pattern ~Definition term (x : A): B , we are actually producing a term of the type Π (x : A) : B .*)
+
+Print modusPonens.
+
+(* Turn zeros into a dependent function.*)
+
+Definition zeros_curried : ∏ (n : nat) , vec nat n.
+(* Here, nat is the type of natural numbers, and vec nat n is the type of vectors of length n whose entries are natural numbers*)
+Proof.
+  intro n.
+  exact (zeros n).
+Defined.
