@@ -54,7 +54,7 @@ Defined.
 
 (* Exercise 3 *)
 
-(* Write ∑ as ~\Sigma~ and terms as (a,,b).*)
+(* Write ∑ as ~\sum~ and terms as (a,,b).*)
 
 Definition π1 {P : UU} (Q : P → UU) : (∑ (x : P), Q x) → P.
 Proof.
