@@ -45,6 +45,16 @@ Proof.
     exact IHn.
 Defined.
 
+Definition right_unit_again (n : nat) : add n 0 = n.
+Proof.
+  induction n.
+  - apply idpath.
+  - cbn.
+    set (myeq := ap S IHn).
+    rewrite myeq.
+    apply idpath.
+Defined.
+
 (* Example 3 *)
 
 Definition reflexive {A : UU} (R: A → A → UU) : UU := ∏ a : A, R a a.
@@ -185,25 +195,3 @@ Proof.
     rewrite natmultassoc.
     exact p.
 Defined.
-     
-Theorem thm (p : nat) (x : nat) : 1 = 0 → p = p.
-Proof.
-  intro q.
-  induction q.
-  apply idpath.
-Defined.
-
-Print thm.
-
-Print paths_rect.
-
-Theorem thm2 (n : nat) : n = n -> n = 5.
-Proof.
-  intro p.
-  induction p.
-
-
-mul n 0 = n.
-Proof.
-  induction n.
-  simpl.

@@ -45,6 +45,16 @@ Proof.
     exact IHn.
 Defined.
 
+Definition right_unit_again (n : nat) : add n 0 = n.
+Proof.
+  induction n.
+  - apply idpath.
+  - cbn.
+    set (myeq := ap S IHn).
+    rewrite myeq.
+    apply idpath.
+Defined.
+
 (* Example 3 *)
 
 Definition reflexive {A : UU} (R: A → A → UU) : UU := ∏ a : A, R a a.
@@ -111,17 +121,18 @@ Defined.
 (* Exercise 8 *)
 
 Theorem complicatedTransport {A : UU} {D : A → UU} {a b c : A} (p : a = b) (q : b = c) (d : D c) : D a.
+Proof.
 Admitted.
 
 (* Exercise 9 *)
 
 Lemma add_S_comm : ∏ n m : nat , n + S m = S (n + m).
-Proof.
 Admitted.
 
+
 Theorem add_comm : ∏ n m : nat , n + m = m + n.
-Proof.
 Admitted.
+
 
 (* Exercise 9 *)
 
