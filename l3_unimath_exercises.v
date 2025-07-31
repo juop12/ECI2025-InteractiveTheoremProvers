@@ -14,7 +14,7 @@ Notation "a = b" := (paths a b) : type_scope.
 Notation idpath := paths_refl .
 *)
 
-Print paths_refl.
+Print paths_refl. (* prove the a = a *)
 
 Definition ap {A B : UU} (f : A → B) {x y : A} (p : x = y) : f x = f y.
 Proof.
