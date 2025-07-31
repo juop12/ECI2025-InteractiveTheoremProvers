@@ -36,18 +36,19 @@ Definition distr {A B C : UU} : (A × B) ⨿ (A × C) → A × (B ⨿ C).
 (* ⨿ is ~\amalg~ *)
 
 Locate "×".
+Locate "⨿".
 
 Proof.
-  intro.
-  induction X.
-  - induction a as [a b].
+  intro c.
+  induction c.
+  - induction a.
     split.
-    + exact a.
-    + exact (inl b).
-  - induction b as [a c].
+      + exact pr1.
+      + exact (inl pr2).
+  - induction b.
     split.
-    + exact a.
-    + exact (inr c).
+      + exact pr1.
+      + exact (inr pr2).
 Defined.
 
 (* Exercise 3 *)
@@ -56,20 +57,16 @@ Defined.
 
 Definition π1 {P : UU} (Q : P → UU) : (∑ (x : P), Q x) → P.
 Proof.
-  intro s.
-  induction s as [p q].
-  exact p.
+  intro.
+  induction X.
+  exact pr1.
 Defined.
 
 (*Exercise 4*)
 
 Definition add : nat → nat → nat.
 Proof. 
-    intro n.
-    intro m.
-    induction m.
-    - exact n.
-    - exact (S IHm).
+
 Defined.
 
 Compute (add 5 7).
