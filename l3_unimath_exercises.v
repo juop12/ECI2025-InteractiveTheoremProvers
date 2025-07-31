@@ -3,7 +3,7 @@ Require Export UniMath.Foundations.All.
 (* Example 1*)
 
 (* Notes:
-- idpath is the name in Unimath for refl.
+- idpath is the name in Unimath for r.
 - Defined as maponpaths in UniMath.Foundations.PartA.*)
 
 (*
@@ -14,11 +14,15 @@ Notation "a = b" := (paths a b) : type_scope.
 Notation idpath := paths_refl .
 *)
 
+Print paths_refl.
+
 Definition ap {A B : UU} (f : A → B) {x y : A} (p : x = y) : f x = f y.
 Proof.
   induction p.
   apply idpath.
 Defined.
+
+Print ap.
 
 Search (∏ A B : UU , ∏ f : A → B, ∏ x y : A , x = y → f x = f y).
 
@@ -39,7 +43,8 @@ Defined.
 Definition right_unit (n : nat) : add n 0 = n.
 Proof.
   induction n.
-  - apply idpath.
+  - simpl.
+    apply idpath.
   - cbn.
     apply ap.
     exact IHn.
@@ -51,8 +56,7 @@ Proof.
   - apply idpath.
   - cbn.
     set (myeq := ap S IHn).
-    rewrite myeq.
-    apply idpath.
+    exact myeq.
 Defined.
 
 (* Example 3 *)
