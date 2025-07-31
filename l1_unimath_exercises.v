@@ -84,7 +84,11 @@ Qed.
 
 Theorem assoc {P Q R : UU} (c : (P × Q) × R ) : P × (Q × R).
 Proof.
-Admitted.
+  induction c as [pq r].
+  induction pq as [p q].
+  set (qr := q,,r).
+  exact (p,,qr).
+Qed.
 
 (* ~Admitted.~ tells Coq that you are not going to leave this proof empty for now, so I will use it in places where I want you to add a proof. *)
 
@@ -94,7 +98,11 @@ Admitted.
 
 Theorem comp {P Q R : UU} (f : P → Q) (g : Q → R) : P → R.
 Proof.
-Admitted.
+  intro p.
+  set (q := f p).
+  set (r := g q).
+  exact r.
+Qed.
 
 (* Exercise 6 *)
 
@@ -102,7 +110,11 @@ Admitted.
 
 Theorem weirdModusPonens {P Q : UU} : ((P → Q) × P → (P × Q)).
 Proof.
-Admitted.
+  intro h.
+  induction h as [pq p].
+  set (q := pq p).
+  exact (p,,q).
+Qed.
 
 (* Exercise 7 *)
 
@@ -123,7 +135,9 @@ Print modusPonens.
 
 Definition identity (P : UU) : P → P.
 Proof.
-Admitted.
+  intro p.
+  exact p.
+Qed.
 
 Print identity.
 
@@ -148,6 +162,7 @@ Defined.
 
 (* When we define something with the pattern ~Definition term (x : A): B , we are actually producing a term of the type Π (x : A) : B .*)
 
+Print zeros.
 Print modusPonens.
 
 (* Turn zeros into a dependent function.*)
@@ -155,4 +170,8 @@ Print modusPonens.
 Definition zeros_curried : ∏ (n : nat) , vec nat n.
 (* Here, nat is the type of natural numbers, and vec nat n is the type of vectors of length n whose entries are natural numbers*)
 Proof.
-  Admitted.
+  intro n.
+  exact (zeros n).
+Defined.
+
+Print zeros_curried.
