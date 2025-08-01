@@ -1,6 +1,10 @@
 # ECI2025
 Resources for the course "Interactive theorem provers: theory and practice" given at the Escuela de Ciencias Informáticas in July 2025 at the University of Buenos Aires
 
+## Final exam
+
+The final exam is in this repository as exam.v. There are 10 exercises: the number that you complete will be your score (in particular, there is no partial credit). Please email it to me at p.r.north@uu.nl on or before 15 August 2025. Remember to include your full name and please put ECI in the subject line.
+
 ## Description
 
 See https://eci.dc.uba.ar/cursos-eci/t1-interactive-theorem-provers-theory-and-practice/
